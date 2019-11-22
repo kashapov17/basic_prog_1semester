@@ -1,2 +1,2 @@
 # basic_prog_1semester
-practical works &amp; tasks (warning! including shitcode)
+practical works &amp; tasks called "Z" (warning! including shitcode)
