@@ -19,7 +19,6 @@ void transform(char *str, size_t len) {
     int count_letter = 0;
     for(size_t i=0; i<len; i++) {
         if(isalpha(str[i])) {
-            if(str[i] == str[i-1] && i != 0) continue;
             count_letter++;
             str[count_letter-1] = str[i];
         }
