@@ -3,6 +3,6 @@ practical works &amp; tasks called "Z" (**warning!** including shitcode)
 \
 **IDE:** Qt Creator 4.10.2(GCC 9.2.0)
 \
-**Contatcs:**
+**Feedback:**
 - [vk](https://vk.com/kashapovd)
 - [telegram](https://t.me/kashapovd)
