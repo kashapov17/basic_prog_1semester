@@ -24,7 +24,7 @@ int **make2d(size_t size) {
             // если ни то, ни другое, т.е. сама побочная диагональ
             else arr[i][j] = 1;
         }
-    }
+    } 
     return arr;
 }
 
@@ -51,7 +51,7 @@ void fread(string file_name) {
         cout << line << "\n";
     }
     fin.close();
-    cout << "\nЧтение из файла завершено\n";
+    cout << "\nЧтение из файла завершено\n"; 
 }
 
 int main() {
