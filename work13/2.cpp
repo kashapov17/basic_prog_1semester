@@ -2,9 +2,9 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
 using namespace std;
 
+#define FILE_PATH "/home/yaroslav/cpp_project/basic_prog/FILES/"
 #define FILE_NAME "work13.txt"
 
 int **make2d(size_t size) {
@@ -18,24 +18,24 @@ int **make2d(size_t size) {
                 arr[i][j] = 0;
             }
             // если ниже побочной диагонали:
-            else if(i>0 && j>=size-i) {
+            else if(i>0 && j>=size-i){
                 arr[i][j] = 2;
             }
             // если ни то, ни другое, т.е. сама побочная диагональ
             else arr[i][j] = 1;
         }
-    } 
+    }
     return arr;
 }
 
-void fwrite(int *const *arr, size_t size, ostream &fout) {
+void fwrite(int *const *arr, size_t size, ostream &fout, string file) {
     for(size_t i=0; i<size; i++) {
         for(size_t j=0; j<size; j++) {
             fout << arr[i][j] << " ";
         }
         fout << "\n";
     }
-    cout << "\nЗапись в файл " << FILE_NAME << " завершена\n\n";
+    cout << "\nЗапись в файл " << file << " завершена\n\n";
 }
 
 void fread(string file_name) {
@@ -51,15 +51,16 @@ void fread(string file_name) {
         cout << line << "\n";
     }
     fin.close();
-    cout << "\nЧтение из файла завершено\n"; 
+    cout << "\nЧтение из файла завершено\n";
 }
 
 int main() {
     int **arr;
     size_t n;
     ofstream fout;
+    string file = string(FILE_PATH) + string(FILE_NAME);
 
-    fout.open(FILE_NAME);
+    fout.open(file);
     if(!fout.is_open()) {
         cerr <<  "Ошибка открытия файла\n";
         exit(0);
@@ -67,8 +68,9 @@ int main() {
     cout << "Введите размерность матрицы N x N; N = ";
     cin >> n;
     arr = make2d(n);
-    fwrite(arr, n, fout);
+    fwrite(arr, n, fout, file);
     fout.close();
-    fread(FILE_NAME);
+    fread(file);
     return 0;
 }
+
