@@ -6,6 +6,7 @@ using namespace std;
 
 #define FILE_PATH "/home/yaroslav/cpp_project/basic_prog/FILES/"
 #define FILE_NAME "work13.txt"
+string file = string(FILE_PATH) + string(FILE_NAME);
 
 int **make2d(size_t size) {
     int **arr;
@@ -58,7 +59,6 @@ int main() {
     int **arr;
     size_t n;
     ofstream fout;
-    string file = string(FILE_PATH) + string(FILE_NAME);
 
     fout.open(file);
     if(!fout.is_open()) {
