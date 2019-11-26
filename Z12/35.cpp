@@ -58,5 +58,8 @@ int main() {
     fliplr(arr, nrows, ncols);
     print_fliplr(arr, nrows, ncols, ost, file);
     ost.close();
+    
+    delete [] arr;
+    arr = nullptr;
     return 0;
 }
