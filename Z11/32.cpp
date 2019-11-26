@@ -50,4 +50,8 @@ int main() {
     fliplr(arr, nrows, ncols);
     cout << "итоговый массив:\n\n";
     print2d(arr, nrows, ncols);
+    
+    delete [] arr;
+    arr = nullptr;
+    return 0;
 }
