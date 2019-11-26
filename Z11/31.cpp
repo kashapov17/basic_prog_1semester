@@ -37,5 +37,8 @@ int main() {
 
     arr = make2d(nrows, ncols, val);
     print_arr(arr, nrows, ncols);
+    
+    delete [] arr;
+    arr = nullptr;
     return 0;
 }
