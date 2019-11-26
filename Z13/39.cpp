@@ -21,6 +21,7 @@ void wrap_text(istream &ist, ostream &ost, int max_line_len) {
         ost << c;
         count_c++;
     }
+    cout << "Запись в файл " << file_name << " завершена\n";
 }
 
 int main() {
