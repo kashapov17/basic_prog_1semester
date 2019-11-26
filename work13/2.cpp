@@ -6,7 +6,7 @@ using namespace std;
 
 #define FILE_PATH "/home/yaroslav/cpp_project/basic_prog/FILES/"
 #define FILE_NAME "work13.txt"
-string file = string(FILE_PATH) + string(FILE_NAME);
+string const file = string(FILE_PATH) + string(FILE_NAME);
 
 int **make2d(size_t size) {
     int **arr;
@@ -14,15 +14,15 @@ int **make2d(size_t size) {
     for(size_t i=0; i<size; i++) {
         arr[i] = new int[size];
         for(size_t j=0; j<size; j++) {
-            // если выше побочной диагонали:
-            if(i<size-1 && j<size-i-1) {
+            // если выше главной диагонали:
+            if(i<size-1 && j>i) {
                 arr[i][j] = 0;
             }
-            // если ниже побочной диагонали:
-            else if(i>0 && j>=size-i){
+            // если ниже главной диагонали:
+            else if(i>0 && j<i){
                 arr[i][j] = 2;
             }
-            // если ни то, ни другое, т.е. сама побочная диагональ
+            // если ни то, ни другое, т.е. сама главная диагональ
             else arr[i][j] = 1;
         }
     }
@@ -60,17 +60,20 @@ int main() {
     size_t n;
     ofstream fout;
 
+    cout << "Введите размерность матрицы N x N; N = ";
+    cin >> n;
+
+    arr = make2d(n);
     fout.open(file);
     if(!fout.is_open()) {
         cerr <<  "Ошибка открытия файла\n";
         exit(0);
     }
-    cout << "Введите размерность матрицы N x N; N = ";
-    cin >> n;
-    arr = make2d(n);
     fwrite(arr, n, fout, file);
     fout.close();
     fread(file);
+
+    delete [] arr;
+    arr = nullptr;
     return 0;
 }
-
