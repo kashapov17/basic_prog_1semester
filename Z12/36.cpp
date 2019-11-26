@@ -54,5 +54,8 @@ int main() {
     transponse(arr, size);
     print_transposed(arr, size, ost, file);
     ost.close();
+    
+    delete [] arr;
+    arr = nullptr;
     return 0;
 }
