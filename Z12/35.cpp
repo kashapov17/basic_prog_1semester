@@ -59,7 +59,7 @@ int main() {
     print_fliplr(arr, nrows, ncols, ost, file);
     ost.close();
     
-    delete [] arr;
+    delete [] arr; 
     arr = nullptr;
     return 0;
 }
