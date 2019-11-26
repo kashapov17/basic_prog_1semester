@@ -37,5 +37,5 @@ int main() {
     cin.getline(sep, SIZE_SEP);
 
     join(sep, ist, ost);
-
+    return 0;
 }
