@@ -48,4 +48,8 @@ int main() {
     transponse(arr, size);
     cout << "итоговый массив:\n\n";
     print2d(arr, size);
+    
+    delete [] arr;
+    arr = nullptr;
+    return 0;
 }
