@@ -47,5 +47,8 @@ int main() {
     arr = make2d(nrows, ncols);
     print2d(arr, nrows, ncols, ost, file);
     ost.close();
+    
+    delete [] arr;
+    arr = nullptr;
     return 0;
 }
