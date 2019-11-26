@@ -24,7 +24,7 @@ size_t join(char *s_out, size_t len, const char *const *s_in, size_t n_in, const
         strcat(s_out, sep);
     }
     if(strlen(s_out) > len) {
-        s_out[len+1] = '\0';
+        s_out[len] = '\0';
     }
     cout << "выходной массив: { " << s_out << " }\n";
     return strlen(s_out);
@@ -34,15 +34,16 @@ int main() {
     char **s_in, *s_out, separator[MAX_SIZE_SEP];
     int len, n_in, n_str;
     size_t len_out;
+    
     s_out = new char[MAX_SIZE_STR];
-
+    s_in = new char*[n_str];
+    
     cout << "Введите разделитель: ";
     cin.getline(separator, MAX_SIZE_SEP);
 
     cout << "Введите количество строк в исходном массиве: ";
     cin >> n_str;
-
-    s_in = new char*[n_str];
+    
     s_in = make_charr(s_in, n_str);
 
     cout << "Введите количество строк в выходном массиве: ";
@@ -52,5 +53,7 @@ int main() {
     cin >> len;
 
     len_out = join(s_out, len, s_in, n_in, separator);
-    cout << "Длина массива: " << len_out << endl;
+    cout << "Длина строки: " << len_out << endl;
+    
+    return 0;
 }
