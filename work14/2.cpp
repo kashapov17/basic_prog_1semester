@@ -11,6 +11,9 @@ void last_dir(ostream &out, istream &in, string file_out) {
     while(in.getline(str, 255)) {
         int len = static_cast<int>(strlen(str));
         for(int i = len; i>=0; i--) {
+            // '/' потому что я использую Linux. 
+            // Пример пути Linux: /etc/ssh/sshd_config
+            // Windows: C:\Windows\Temp\
             if(str[i] == '/') {
                 if(i==0) {
                     out << '/' << "\n";
