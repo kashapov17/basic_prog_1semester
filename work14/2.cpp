@@ -5,29 +5,27 @@
 #include <string.h>
 using namespace std;
 
+#define MAX_SIZE 255
+
 void last_dir(ostream &out, istream &in, string file_out) {
-    char str[255];
-    char dir[255];
-    while(in.getline(str, 255)) {
+    char str[MAX_SIZE];
+    while(in.getline(str, MAX_SIZE)) {
+        int count_slash = 0;
         int len = static_cast<int>(strlen(str));
-        for(int i = len; i>=0; i--) {
-            // '/' потому что я использую Linux. 
-            // Пример пути Linux: /etc/ssh/sshd_config
-            // Windows: C:\Windows\Temp\
+        for(int i = len; i >= 0; i--) {
             if(str[i] == '/') {
-                if(i==0) {
+                count_slash++;
+                if(i == 0 && count_slash == 1) {
                     out << '/' << "\n";
                     break;
                 }
-                int k = 0;
-                for(int j=i-1; str[j] != '/'; j--, k++) {
-                    dir[k] = str[j];
+                if(count_slash == 2) {
+                    for(int j = i+1; str[j] != '/'; j++) {
+                        out << str[j];
+                    }
+                    out << "\n";
+                    break;
                 }
-                for(int n = k-1; n>=0; n--) {
-                    out << dir[n];
-                }
-                out << "\n";
-                break;
             }
         }
     }
@@ -40,14 +38,17 @@ int main() {
     ofstream out;
     ifstream in;
 
-    cout << "Введите абсолютный путь к исходному файлу:";
+    cout << "Введите абсолютный путь к исходному файлу: ";
     cin >> file_in;
-    cout << "Введите абсолютный путь к итоговому файлу";
-    cin >> file_out;
-
     in.open(file_in);
+    if(!in.is_open()) {
+        cerr << "Ошибка открытия файла\n";
+        exit(0);
+    }
+    cout << "Введите абсолютный путь к итоговому файлу: ";
+    cin >> file_out;
     out.open(file_out);
-    if(!in.is_open() || !out.is_open()) {
+    if(!out.is_open()) {
         cerr << "Ошибка создания/открытия файла";
         exit(0);
     }
