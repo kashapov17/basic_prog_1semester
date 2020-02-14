@@ -75,7 +75,6 @@ void my_task(istream &ist) {
         cout << *(row + i) << " ";
     cout << endl;
 
-
 #if(variant%10==1)
     if (isAscending(row, m)) {
         if (binSearch(row, k, m))
@@ -104,6 +103,9 @@ void my_task(istream &ist) {
  	cout << "All numbers in the row don't decending" << endl;
 
 #endif
+
+    delete [] row;
+    row = nullptr;
 }
 
 void getMatrSize(istream &ist, int &n, int &m) {
