@@ -4,7 +4,7 @@
 #include <fstream>
 using namespace std;
 
-#define FILE_PATH "/home/yaroslav/cpp_project/basic_prog/FILES/"
+#define FILE_PATH "urpath"
 #define FILE_NAME "work13.txt"
 string const file = string(FILE_PATH) + string(FILE_NAME);
 
